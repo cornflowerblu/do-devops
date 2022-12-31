@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["always-sunny-picker-v1/app"]'
+    management.cattle.io/ui-managed: "true"
+  creationTimestamp: "2022-12-26T02:28:14Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:field.cattle.io/targetWorkloadIds: {}
+          f:management.cattle.io/ui-managed: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"bb7a5b11-a9d8-4567-bf09-9b747f0fe419"}: {}
+      f:spec:
+        f:internalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":80,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-26T02:36:19Z"
+  name: app
+  namespace: always-sunny-picker-v1
+  ownerReferences:
+  - apiVersion: apps/v1
+    controller: true
+    kind: Deployment
+    name: app
+    uid: bb7a5b11-a9d8-4567-bf09-9b747f0fe419
+  resourceVersion: "770157"
+  uid: 99bfd973-2fe3-4517-b33b-1e6a8fc30a28
+spec:
+  clusterIP: 10.245.0.31
+  clusterIPs:
+  - 10.245.0.31
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: default
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-always-sunny-picker-v1-app
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

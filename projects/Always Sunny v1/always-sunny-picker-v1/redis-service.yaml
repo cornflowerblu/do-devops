@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["always-sunny-picker-v1/redis"]'
+    management.cattle.io/ui-managed: "true"
+  creationTimestamp: "2022-12-25T15:29:35Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:field.cattle.io/targetWorkloadIds: {}
+          f:management.cattle.io/ui-managed: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"7fef6f21-5185-4519-90c8-e6cc482a78dd"}: {}
+      f:spec:
+        f:internalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":6379,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-25T15:29:35Z"
+  name: redis
+  namespace: always-sunny-picker-v1
+  ownerReferences:
+  - apiVersion: apps/v1
+    controller: true
+    kind: Deployment
+    name: redis
+    uid: 7fef6f21-5185-4519-90c8-e6cc482a78dd
+  resourceVersion: "422515"
+  uid: f80c435d-ba51-4dd5-97a4-922d3c29c764
+spec:
+  clusterIP: 10.245.99.252
+  clusterIPs:
+  - 10.245.99.252
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: default
+    port: 6379
+    protocol: TCP
+    targetPort: 6379
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-always-sunny-picker-v1-redis
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

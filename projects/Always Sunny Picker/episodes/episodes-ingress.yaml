@@ -1,0 +1,71 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/issuer: production-issuer
+    cert-manager.io/issuer-group: cert-manager.k8s.cloudflare.com
+    cert-manager.io/issuer-kind: OriginIssuer
+    field.cattle.io/publicEndpoints: '[{"addresses":["146.190.14.75"],"port":443,"protocol":"HTTPS","serviceName":"episodes:episodes","ingressName":"episodes:episodes-ingress","hostname":"episodes.rurich.dev","path":"/","allNodes":false}]'
+    objectset.rio.cattle.io/applied: H4sIAAAAAAAA/3SSMZPTMBCF/8vWss9OckRxS5XmKGBomBQraWWL2JJGKwcYj/87oyTAcXPpZL/3vn1eawGM7isldsFDB57yj5DOzvf1WXLtwtOlBQFn5w10cPR9ImYQMFFGgxmhWwC9DxmzC57Lo6aUqwk99pQKwDHPlKCDmIKZdfFV93figbnqU5gjdP/LpZAew2zsiIlqHabHgHvhT8n1zh//TAvqO+nMlOvkQq0x55GuoeL9oBrcyq2uttZStZNkq4NtZYV0aPe2lWZjnmEVMKKi8fqlj3AD8gAd7M2z3FijGqsV7ZQ5tBtp273cHHaolNwRSmqavSlQjxNBBxQdB0Ncub+bLgpH1K/lkuBIupS4Oz+OyPxyo/je+Z8gIM0jMXTfFhgC51f5Os3J6aE2dAEBQ86xkCLm4WZXqM9UFrgAU7q4Mnx52xEExJDyVZknVX6xbNZ1FVcQdPAEt+OXX7HkjlMcaSJ/uyqfI2lnnYb1tK4nAXn817Sc3u16EsCkE+WXN+sq6QL6HQAA//9AuNmrzgIAAA
+    objectset.rio.cattle.io/id: 6b0a383c-3ffe-48ef-9f18-ae917f18d2d5
+  creationTimestamp: "2022-12-25T08:15:13Z"
+  generation: 2
+  labels:
+    objectset.rio.cattle.io/hash: 7d582fdb0fcbe4bd9128f178294abb84ea8e007d
+  managedFields:
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: nginx-ingress-controller
+    operation: Update
+    subresource: status
+    time: "2022-12-25T08:15:37Z"
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:cert-manager.io/issuer: {}
+          f:cert-manager.io/issuer-group: {}
+          f:cert-manager.io/issuer-kind: {}
+          f:field.cattle.io/publicEndpoints: {}
+          f:objectset.rio.cattle.io/applied: {}
+          f:objectset.rio.cattle.io/id: {}
+        f:labels:
+          .: {}
+          f:objectset.rio.cattle.io/hash: {}
+      f:spec:
+        f:ingressClassName: {}
+        f:rules: {}
+        f:tls: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-25T08:15:37Z"
+  name: episodes-ingress
+  namespace: episodes
+  resourceVersion: "4449563"
+  uid: 93bd9fe2-f715-4204-bfe1-c0c4d3c6222b
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: episodes.rurich.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: episodes
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - episodes.rurich.dev
+status:
+  loadBalancer:
+    ingress:
+    - ip: 146.190.14.75

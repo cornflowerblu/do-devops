@@ -1,0 +1,181 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "4"
+    field.cattle.io/publicEndpoints: '[{"addresses":["146.190.14.75"],"port":443,"protocol":"HTTPS","serviceName":"hasura-webhook-auth:hasura-webhook-auth","ingressName":"hasura-webhook-auth:hasura-webhook-auth","hostname":"hasura-auth.rurich.dev","path":"/","allNodes":false}]'
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"4","field.cattle.io/publicEndpoints":"[{\"addresses\":[\"146.190.14.75\"],\"port\":443,\"protocol\":\"HTTPS\",\"serviceName\":\"hasura-webhook-auth:hasura-webhook-auth\",\"ingressName\":\"hasura-webhook-auth:hasura-webhook-auth\",\"hostname\":\"hasura-auth.rurich.dev\",\"path\":\"/\",\"allNodes\":false}]"},"creationTimestamp":"2022-12-31T02:53:35Z","generation":12,"labels":{"workload.user.cattle.io/workloadselector":"apps.deployment-hasura-webhook-auth-hasura-webhook-auth"},"managedFields":[{"apiVersion":"apps/v1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{"f:field.cattle.io/publicEndpoints":{}},"f:labels":{".":{},"f:workload.user.cattle.io/workloadselector":{}}},"f:spec":{"f:progressDeadlineSeconds":{},"f:revisionHistoryLimit":{},"f:selector":{},"f:strategy":{"f:rollingUpdate":{".":{},"f:maxSurge":{},"f:maxUnavailable":{}},"f:type":{}},"f:template":{"f:metadata":{"f:labels":{".":{},"f:workload.user.cattle.io/workloadselector":{}}},"f:spec":{"f:affinity":{},"f:containers":{"k:{\"name\":\"auth-webhook\"}":{".":{},"f:command":{},"f:envFrom":{},"f:image":{},"f:imagePullPolicy":{},"f:name":{},"f:ports":{".":{},"k:{\"containerPort\":8000,\"protocol\":\"TCP\"}":{".":{},"f:containerPort":{},"f:name":{},"f:protocol":{}}},"f:resources":{},"f:terminationMessagePath":{},"f:terminationMessagePolicy":{}}},"f:dnsPolicy":{},"f:imagePullSecrets":{".":{},"k:{\"name\":\"registry-always-sunny\"}":{}},"f:restartPolicy":{},"f:schedulerName":{},"f:securityContext":{},"f:terminationGracePeriodSeconds":{}}}}},"manager":"rancher","operation":"Update","time":"2022-12-31T02:56:28Z"},{"apiVersion":"apps/v1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{"f:kubectl.kubernetes.io/last-applied-configuration":{}}},"f:spec":{"f:replicas":{}}},"manager":"kubectl-client-side-apply","operation":"Update","time":"2022-12-31T03:19:00Z"},{"apiVersion":"apps/v1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:deployment.kubernetes.io/revision":{}}},"f:status":{"f:availableReplicas":{},"f:conditions":{".":{},"k:{\"type\":\"Available\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:message":{},"f:reason":{},"f:status":{},"f:type":{}},"k:{\"type\":\"Progressing\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:message":{},"f:reason":{},"f:status":{},"f:type":{}}},"f:observedGeneration":{},"f:readyReplicas":{},"f:replicas":{},"f:updatedReplicas":{}}},"manager":"kube-controller-manager","operation":"Update","subresource":"status","time":"2022-12-31T03:19:02Z"}],"name":"hasura-webhook-auth","namespace":"hasura-webhook-auth","resourceVersion":"4531413","uid":"29dcb59b-bb49-4c40-8ad4-ba0a3f4a57b9"},"spec":{"progressDeadlineSeconds":600,"replicas":3,"revisionHistoryLimit":10,"selector":{"matchLabels":{"workload.user.cattle.io/workloadselector":"apps.deployment-hasura-webhook-auth-hasura-webhook-auth"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"workload.user.cattle.io/workloadselector":"apps.deployment-hasura-webhook-auth-hasura-webhook-auth"}},"spec":{"affinity":{},"containers":[{"command":["node","./bin/www"],"envFrom":[{"secretRef":{"name":"platform","optional":false}}],"image":"registry.digitalocean.com/always-sunny/auth-webhook","imagePullPolicy":"Always","name":"auth-webhook","ports":[{"containerPort":8000,"name":"8000tcp","protocol":"TCP"}],"resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","imagePullSecrets":[{"name":"registry-always-sunny"}],"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30}}},"status":{"availableReplicas":6,"conditions":[{"lastTransitionTime":"2022-12-31T02:53:35Z","lastUpdateTime":"2022-12-31T02:59:46Z","message":"ReplicaSet \"hasura-webhook-auth-8ddd75f7\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"},{"lastTransitionTime":"2022-12-31T03:19:02Z","lastUpdateTime":"2022-12-31T03:19:02Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"}],"observedGeneration":12,"readyReplicas":6,"replicas":6,"updatedReplicas":6}}
+  creationTimestamp: "2022-12-31T02:53:35Z"
+  generation: 13
+  labels:
+    workload.user.cattle.io/workloadselector: apps.deployment-hasura-webhook-auth-hasura-webhook-auth
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:field.cattle.io/publicEndpoints: {}
+        f:labels:
+          .: {}
+          f:workload.user.cattle.io/workloadselector: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:revisionHistoryLimit: {}
+        f:selector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:labels:
+              .: {}
+              f:workload.user.cattle.io/workloadselector: {}
+          f:spec:
+            f:affinity: {}
+            f:containers:
+              k:{"name":"auth-webhook"}:
+                .: {}
+                f:command: {}
+                f:envFrom: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":8000,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+            f:dnsPolicy: {}
+            f:imagePullSecrets:
+              .: {}
+              k:{"name":"registry-always-sunny"}: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-31T02:56:28Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        f:replicas: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2022-12-31T03:19:00Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    subresource: status
+    time: "2022-12-31T03:19:02Z"
+  name: hasura-webhook-auth
+  namespace: hasura-webhook-auth
+  resourceVersion: "4532109"
+  uid: 29dcb59b-bb49-4c40-8ad4-ba0a3f4a57b9
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: apps.deployment-hasura-webhook-auth-hasura-webhook-auth
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: apps.deployment-hasura-webhook-auth-hasura-webhook-auth
+    spec:
+      affinity: {}
+      containers:
+      - command:
+        - node
+        - ./bin/www
+        envFrom:
+        - secretRef:
+            name: platform
+            optional: false
+        image: registry.digitalocean.com/always-sunny/auth-webhook
+        imagePullPolicy: Always
+        name: auth-webhook
+        ports:
+        - containerPort: 8000
+          name: 8000tcp
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: registry-always-sunny
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2022-12-31T02:53:35Z"
+    lastUpdateTime: "2022-12-31T02:59:46Z"
+    message: ReplicaSet "hasura-webhook-auth-8ddd75f7" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2022-12-31T03:19:02Z"
+    lastUpdateTime: "2022-12-31T03:19:02Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 13
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3

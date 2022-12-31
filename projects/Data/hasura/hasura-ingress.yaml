@@ -1,0 +1,71 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/issuer: prod-issuer
+    cert-manager.io/issuer-group: cert-manager.k8s.cloudflare.com
+    cert-manager.io/issuer-kind: OriginIssuer
+    field.cattle.io/publicEndpoints: '[{"addresses":["146.190.14.75"],"port":443,"protocol":"HTTPS","serviceName":"hasura:hasura","ingressName":"hasura:hasura-ingress","hostname":"hasura.rurich.dev","path":"/","allNodes":false}]'
+    objectset.rio.cattle.io/applied: H4sIAAAAAAAA/3SRv5KbMBDG32VrwWGfDjBtqmsuKTJpMi4WsYACSMyucJxhePeMbCc+F+72z7e//bRaAWf7g1isd1CBo/Db82Bdlw6lpNa/nHagYLCugQreXcckAgomCthgQKhWQOd8wGC9k5ga4pBM6LAjjgArshBDBTP7Jrll6oks6dgvM1SP7WjFjH5p2hGZUuOn54Cb1a9sO+ve/23z9S8yQSikbH1qMISRLkNRq9sd6SKrk/0edaLzN5OgyeqE6qbUh7bYtS3BpmDEmsbLG5/hepQeKjjo1xozTWVTFntsylxjkdf0ppuCsvygc4O5Nq8mQh1OBBX0KAtjYv9fONZlRnNvRrXMZKKBm+7LiCIfV4LrrDuDAl5GEqh+rtB7CXf0UKa8sDV92tAJFPQhzBE1Y+iv+hrNQPF6Kwjxycbd66NBUDB7Dpf6MtXxX8ts2zZ1wUAFL3ANv/+Z49Q3ptaeYTtu21FBGO/GYnSDfvZ1VCBkmMLHw13iZIT8DQAA//8pnVJVrwIAAA
+    objectset.rio.cattle.io/id: 4f1e470b-22a4-465c-ac0b-ebd849f71ffe
+  creationTimestamp: "2022-12-25T03:49:11Z"
+  generation: 5
+  labels:
+    objectset.rio.cattle.io/hash: 943ba04e8d872ad864a76be54d7e06946ca64c3c
+  managedFields:
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: nginx-ingress-controller
+    operation: Update
+    subresource: status
+    time: "2022-12-25T03:49:37Z"
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:cert-manager.io/issuer: {}
+          f:cert-manager.io/issuer-group: {}
+          f:cert-manager.io/issuer-kind: {}
+          f:field.cattle.io/publicEndpoints: {}
+          f:objectset.rio.cattle.io/applied: {}
+          f:objectset.rio.cattle.io/id: {}
+        f:labels:
+          .: {}
+          f:objectset.rio.cattle.io/hash: {}
+      f:spec:
+        f:ingressClassName: {}
+        f:rules: {}
+        f:tls: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-25T03:49:37Z"
+  name: hasura-ingress
+  namespace: hasura
+  resourceVersion: "4449669"
+  uid: 80d665ad-b3f1-415f-910e-94d3bfdb0bdd
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: hasura.rurich.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: hasura
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - hasura.rurich.dev
+status:
+  loadBalancer:
+    ingress:
+    - ip: 146.190.14.75

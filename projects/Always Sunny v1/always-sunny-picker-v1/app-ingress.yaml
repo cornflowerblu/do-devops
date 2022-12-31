@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":["146.190.14.75"],"port":443,"protocol":"HTTPS","serviceName":"always-sunny-picker-v1:app","ingressName":"always-sunny-picker-v1:app","hostname":"sunny-old.rurich.dev","path":"/","allNodes":false}]'
+  creationTimestamp: "2022-12-26T02:31:53Z"
+  generation: 4
+  managedFields:
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: nginx-ingress-controller
+    operation: Update
+    subresource: status
+    time: "2022-12-26T02:32:51Z"
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:field.cattle.io/publicEndpoints: {}
+      f:spec:
+        f:ingressClassName: {}
+        f:rules: {}
+        f:tls: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-26T02:32:51Z"
+  name: app
+  namespace: always-sunny-picker-v1
+  resourceVersion: "4447528"
+  uid: 960e514b-7e0d-498f-8ed2-102c085da5a7
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: sunny-old.rurich.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: app
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - sunny-old.rurich.dev
+status:
+  loadBalancer:
+    ingress:
+    - ip: 146.190.14.75

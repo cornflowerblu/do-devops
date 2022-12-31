@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    objectset.rio.cattle.io/applied: H4sIAAAAAAAA/3zQMU/DMBAF4P/y5qTEaUoc/wokJBbEcLbP1JDaln3qUuW/o1CWLmz33vCd9G6gEt+4tpgTDK4KHb5j8jB45XqNjtHhwkKehGBuoJSykMSc2h6z/WInjeVQYz44Eln5EPNT3IVnO9BRH11/DIH7SXPol6B0T7yoOSjtR3/C1mEly+u/3JnaGQazP+kxeDsEZ3myflGjDmrW4zKRtXpi0jwMs9/RRBeGAZfYsueGe9MKuYd669AKu/15yVUazPv9gtFDB6H6yfLyl/WwfXRovLKTXH/nKOVB27afAAAA//9X/ys0UgEAAA
+    objectset.rio.cattle.io/id: 6b0a383c-3ffe-48ef-9f18-ae917f18d2d5
+  creationTimestamp: "2022-12-25T08:15:13Z"
+  labels:
+    objectset.rio.cattle.io/hash: 7d582fdb0fcbe4bd9128f178294abb84ea8e007d
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:objectset.rio.cattle.io/applied: {}
+          f:objectset.rio.cattle.io/id: {}
+        f:labels:
+          .: {}
+          f:objectset.rio.cattle.io/hash: {}
+      f:spec:
+        f:internalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":80,"protocol":"TCP"}:
+            .: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-25T08:15:13Z"
+  name: episodes
+  namespace: episodes
+  resourceVersion: "207493"
+  uid: f8bf224d-4ce8-41e3-88b8-8366533dcb5b
+spec:
+  clusterIP: 10.245.51.139
+  clusterIPs:
+  - 10.245.51.139
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: episodes
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

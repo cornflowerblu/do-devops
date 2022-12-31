@@ -1,0 +1,196 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "5"
+    field.cattle.io/publicEndpoints: "null"
+  creationTimestamp: "2022-12-25T15:29:35Z"
+  generation: 15
+  labels:
+    workload.user.cattle.io/workloadselector: apps.deployment-always-sunny-picker-v1-redis
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:field.cattle.io/publicEndpoints: {}
+        f:labels:
+          .: {}
+          f:workload.user.cattle.io/workloadselector: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:annotations:
+              .: {}
+              f:cattle.io/timestamp: {}
+            f:labels:
+              .: {}
+              f:workload.user.cattle.io/workloadselector: {}
+          f:spec:
+            f:affinity: {}
+            f:containers:
+              k:{"name":"redis"}:
+                .: {}
+                f:env:
+                  .: {}
+                  k:{"name":"nopass"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":6379,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/mnt"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+            f:dnsConfig: {}
+            f:dnsPolicy: {}
+            f:hostname: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"vol-i1yhl"}:
+                .: {}
+                f:hostPath:
+                  .: {}
+                  f:path: {}
+                  f:type: {}
+                f:name: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-25T15:39:50Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    subresource: status
+    time: "2022-12-26T08:59:36Z"
+  name: redis
+  namespace: always-sunny-picker-v1
+  resourceVersion: "969134"
+  uid: 7fef6f21-5185-4519-90c8-e6cc482a78dd
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: apps.deployment-always-sunny-picker-v1-redis
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2022-12-25T15:40:03Z"
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: apps.deployment-always-sunny-picker-v1-redis
+    spec:
+      affinity: {}
+      containers:
+      - env:
+        - name: nopass
+          value: "true"
+        image: redis
+        imagePullPolicy: Always
+        name: redis
+        ports:
+        - containerPort: 6379
+          name: default
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /mnt
+          name: vol-i1yhl
+      dnsConfig: {}
+      dnsPolicy: ClusterFirst
+      hostname: redis-service
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /
+          type: ""
+        name: vol-i1yhl
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2022-12-25T15:29:37Z"
+    lastUpdateTime: "2022-12-25T15:29:37Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-12-25T15:29:35Z"
+    lastUpdateTime: "2022-12-26T08:59:36Z"
+    message: ReplicaSet "redis-5bb8448fd6" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 15
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

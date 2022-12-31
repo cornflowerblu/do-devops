@@ -1,0 +1,184 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "6"
+  creationTimestamp: "2022-12-26T02:12:06Z"
+  generation: 6
+  labels:
+    workload.user.cattle.io/workloadselector: apps.deployment-always-sunny-picker-v1-worker01
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:workload.user.cattle.io/workloadselector: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:annotations:
+              .: {}
+              f:cattle.io/timestamp: {}
+            f:labels:
+              .: {}
+              f:workload.user.cattle.io/workloadselector: {}
+          f:spec:
+            f:affinity: {}
+            f:containers:
+              k:{"name":"worker01"}:
+                .: {}
+                f:command: {}
+                f:env:
+                  .: {}
+                  k:{"name":"PORT"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                f:envFrom: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":3001,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+            f:dnsPolicy: {}
+            f:imagePullSecrets:
+              .: {}
+              k:{"name":"registry-always-sunny"}: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:serviceAccount: {}
+            f:serviceAccountName: {}
+            f:terminationGracePeriodSeconds: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-26T02:17:56Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    subresource: status
+    time: "2022-12-26T08:59:48Z"
+  name: worker01
+  namespace: always-sunny-picker-v1
+  resourceVersion: "969317"
+  uid: 0524ad62-2ea6-452a-bf87-afed188bf0b6
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: apps.deployment-always-sunny-picker-v1-worker01
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2022-12-26T08:59:45Z"
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: apps.deployment-always-sunny-picker-v1-worker01
+    spec:
+      affinity: {}
+      containers:
+      - command:
+        - node
+        - ./workers/worker-preload.js
+        env:
+        - name: PORT
+          value: "3002"
+        envFrom:
+        - secretRef:
+            name: common-and-backend
+            optional: false
+        image: registry.digitalocean.com/always-sunny/app
+        imagePullPolicy: Always
+        name: worker01
+        ports:
+        - containerPort: 3001
+          name: default
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: registry-always-sunny
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: default
+      serviceAccountName: default
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2022-12-26T02:12:08Z"
+    lastUpdateTime: "2022-12-26T02:12:08Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-12-26T02:12:06Z"
+    lastUpdateTime: "2022-12-26T08:59:48Z"
+    message: ReplicaSet "worker01-d7c9888db" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 6
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

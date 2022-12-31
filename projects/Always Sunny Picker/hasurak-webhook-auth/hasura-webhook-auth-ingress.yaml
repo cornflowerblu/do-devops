@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":["146.190.14.75"],"port":443,"protocol":"HTTPS","serviceName":"hasura-webhook-auth:hasura-webhook-auth","ingressName":"hasura-webhook-auth:hasura-webhook-auth","hostname":"hasura-auth.rurich.dev","path":"/","allNodes":false}]'
+  creationTimestamp: "2022-12-31T03:35:45Z"
+  generation: 1
+  managedFields:
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: nginx-ingress-controller
+    operation: Update
+    subresource: status
+    time: "2022-12-31T03:35:45Z"
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:field.cattle.io/publicEndpoints: {}
+      f:spec:
+        f:ingressClassName: {}
+        f:rules: {}
+        f:tls: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-31T03:35:45Z"
+  name: hasura-webhook-auth
+  namespace: hasura-webhook-auth
+  resourceVersion: "4539838"
+  uid: 6181f89f-ad16-412b-8fd3-d628e591bdcd
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: hasura-auth.rurich.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: hasura-webhook-auth
+            port:
+              number: 8000
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - hasura-auth.rurich.dev
+status:
+  loadBalancer:
+    ingress:
+    - ip: 146.190.14.75

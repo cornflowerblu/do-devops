@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    objectset.rio.cattle.io/applied: H4sIAAAAAAAA/3zQvW7rMAyG4Xv5ZjvHknX8o6soUKBL0YGSmVqtIwkSmyXwvRduOmTqxpfDQ4A3UA4vXGpIERZXhQafIS6weOZyDZ7R4MJCCwnB3kAxJiEJKdYjk/tgL5XlVEI6eRLZ+BTSv3AIZ/5v+tmpVinDrSGe2nlYTGvORJpG7VkN2Bts5Hj7k1uprrDwZnST7oaRun7Wmvqh69XZ6ZGd1noxnly30KwPNNKFYbFS/SqEe9dM/mG5N6iZ/XE4pyIV9vU+wU5dA6HyzvL021O3vzWovLGXVH5ekfODte/fAQAA//+3eAPLTAEAAA
+    objectset.rio.cattle.io/id: fe5439b1-114e-4ae8-96d4-4faa2a72ce16
+  creationTimestamp: "2022-12-25T03:44:55Z"
+  labels:
+    objectset.rio.cattle.io/hash: c47b82067a03922a36031fb27eb222d4cab0da92
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:objectset.rio.cattle.io/applied: {}
+          f:objectset.rio.cattle.io/id: {}
+        f:labels:
+          .: {}
+          f:objectset.rio.cattle.io/hash: {}
+      f:spec:
+        f:internalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":80,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+          k:{"port":8001,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: rancher
+    operation: Update
+    time: "2022-12-25T05:07:25Z"
+  name: hasura
+  namespace: hasura
+  resourceVersion: "112862"
+  uid: 632ce1a8-6a47-496a-9c20-83a8c6d9274d
+spec:
+  clusterIP: 10.245.205.128
+  clusterIPs:
+  - 10.245.205.128
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: default
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  - name: api-key
+    port: 8001
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hasura
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
